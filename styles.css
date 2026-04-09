@@ -1,0 +1,277 @@
+:root {
+    --light-gray: #f0f0f0;
+    --dark-gray: #1F1F1F;
+    --blue: #0078D7;
+}
+
+body {
+    display: flex;
+    font-family: 'Segoe UI';
+    margin: 0;
+    padding: 0;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    padding-bottom: 40px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 100%;
+    color: black;
+}
+h3 {
+    margin: 0 0 5px 0;
+    font-size: 120%;
+    color: black;
+}
+p {
+    padding: 5px;
+    margin: 0;
+}
+ul {
+    list-style-position: inside;
+}
+
+.window {
+    width: 600px;
+    max-width: 100%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    margin: 20px;
+    -webkit-backdrop-filter: blur(2.5px);
+    backdrop-filter: blur(2.5px);
+}
+.window:hover {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.header {
+    height: 30px;
+    background-color: white;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttons {
+    font-family: 'Segoe MDL2 Assets';
+    color: #000;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    cursor: pointer;
+}
+.buttons::before {
+    content : '\E738     \E739     \E711';
+}
+.content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.divider {
+    height: 2px;
+    background-color: var(--light-gray);
+    margin: 10px 10px;
+}
+.capsule {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    margin: 10px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bar {
+    position: fixed;
+    padding: 0 5px;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.filler {
+    flex: 1;
+}
+.bar-items {
+    display: flex;
+    height: 100%;
+}
+.bar-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px;
+    gap: 5px;
+    cursor: pointer;
+    border-bottom: transparent solid 2px;
+    box-sizing: border-box;
+    transition: border-bottom 0.3s ease-in-out;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+.bar-item:hover {
+    border-bottom: var(--blue) solid 2px;
+    background-color: rgba(0, 120, 215, 0.1);
+}
+
+.start-menu {
+    position: fixed;
+    bottom: 40px;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.start-menu.open {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateX(0);
+}
+.start-menu-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+.start-menu-left, .start-menu-right {
+    font-family: 'Segoe MDL2 Assets';
+    font-size: 50px;
+    color: #000;
+    cursor: pointer;
+    transition: font-size 0.3s ease-in-out;
+}
+.start-menu-left:hover, .start-menu-right:hover {
+    font-size: 55px;
+}
+.start-menu-left::before {
+    content: '\E012';
+}
+.start-menu-right::before {
+    content: '\E013';
+}
+.start-menu-plate {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    overflow: hidden;
+}
+.start-menu-plate img {
+    animation: rotate 5s linear infinite;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    filter: brightness(1);
+    cursor: pointer;
+}
+.start-menu-plate p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-weight: bold;
+    pointer-events: none;
+    transition: font-size 0.3s ease-in-out;
+}
+.start-menu-plate:hover p {
+    font-size: 55px;
+}
+.start-menu-plate p::before {
+    content: '\E768';
+    font-family: 'Segoe MDL2 Assets';
+}
+.start-menu-plate p.playing::before {
+    content: '\E769';
+    font-family: 'Segoe MDL2 Assets';
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.start-menu-top {
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+/*specific elements*/
+.profile-image {
+    margin-inline: auto;
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+#logo {
+    width: 20px;
+    height: 20px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid .capsule {
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Segoe MDL2 Assets';
+    src: url('Segoe\ MDL2\ Assets.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('segoeuithis.ttf') format('truetype');
+}
